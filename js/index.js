@@ -10,13 +10,27 @@ window.addEventListener("load", () => {
     destinationImg.style.boxShadow = '10px 10px 5px #aaaaaa';
 });
 
-//change image
-const busImg = document.querySelector('.intro img');
-busImg.addEventListener('click', changeImg);
+//bubbling
+const body = document.querySelector(".page");
+body.addEventListener('click', () => {
+    body.style.backgroundColor = "green";
+});
 
-function changeImg() {
+const introInfo = document.querySelector(".intro");
+introInfo.addEventListener('click', () => {
+    introInfo.style.backgroundColor = "rgb(" + event.offsetX + ", " + event.offsetY + ", 40)";
+});
+
+//change image end of bubbling
+const busImg = document.querySelector('.intro img');
+busImg.addEventListener('click', (event) => {
     busImg.src = "https://images.assetsdelivery.com/compings_v2/valeriikhadeiev/valeriikhadeiev1904/valeriikhadeiev190400538.jpg";
-};
+    event.stopPropagation();
+});
+
+//function changeImg() {
+//    busImg.src = "https://images.assetsdelivery.com/compings_v2/valeriikhadeiev/valeriikhadeiev1904/valeriikhadeiev190400538.jpg";
+//};
 
 //scale pics
 const imgContent = document.querySelector('.content-section .img-content img');
